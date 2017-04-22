@@ -3,7 +3,7 @@
     <router-view></router-view>
 
     <mt-tabbar fixed v-model="selected">
-      <mt-tab-item id="index" >
+      <mt-tab-item id="information" >
           外卖
       </mt-tab-item>
       <mt-tab-item id="myCenter" >我的

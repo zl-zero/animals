@@ -3,7 +3,7 @@ export default {
   name: 'index',
   data() {
     return {
-      selected: 'index'
+      selected: 'information'
     };
   },
   watch:{

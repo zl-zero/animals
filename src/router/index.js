@@ -32,13 +32,13 @@ routers.beforeEach((to, from, next) => {
   const codes = Util.getQueryString('code');
   const token = storeUtil.getLocalStore('token');
   console.log(token);
-  if (codes == null && token=='null') {
+  if (codes == null && token==null) {
     /* eslint-disable */
     const uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + wxConfigs.appid
     + "&redirect_uri=" + encodeURI(wxConfigs.redirect_uri) + "&response_type=code&scope=" + wxConfigs.snsapi_userinfo + "&state=STATE#wechat_redirect";
     window.location.href = uri;
     next(false);
-  } else if(token =='null'){
+  } else if(token ==null){
     reqConfigs.doLogin({
       code:codes
     });
