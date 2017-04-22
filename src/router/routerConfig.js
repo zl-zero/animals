@@ -9,9 +9,15 @@ export default {
       component: Comps.Home
     },
     {
-      path:'/myCenter',
-      name:'myCenter',
-      component: Comps.MyCenter
+      path:'/index',
+      name:'index',
+      component: Comps.Home,
+      children: [
+        {
+          path:'/myCenter',
+          name:'myCenter',
+          component: Comps.MyCenter
+        }]
     }
   ]
 }

@@ -4,6 +4,7 @@ import Router from 'vue-router';
 /* eslint-disable */
 import wxConfigs from 'src/configs/wxConfigs';
 import Util from 'src/utils/util';
+import storeUtil from 'utils/storeUtils';
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -29,16 +30,20 @@ const routers = new Router({
 
 routers.beforeEach((to, from, next) => {
   const codes = Util.getQueryString('code');
-  if (codes == null) {
+  const token = storeUtil.getLocalStore('token');
+  console.log(token);
+  if (codes == null && token=='null') {
     /* eslint-disable */
     const uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + wxConfigs.appid
     + "&redirect_uri=" + encodeURI(wxConfigs.redirect_uri) + "&response_type=code&scope=" + wxConfigs.snsapi_userinfo + "&state=STATE#wechat_redirect";
     window.location.href = uri;
     next(false);
-  } else {
+  } else if(token =='null'){
     reqConfigs.doLogin({
       code:codes
     });
+    next();
+  }else{
     next();
   }
 });

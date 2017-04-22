@@ -8,9 +8,9 @@ Vue.use(VueAxios, axios);
 export default {
   doPost(uri,data,success_callback,error_callback){
     Vue.axios.post(uri,data).then(function (response) {
-      console.log(response);
+      success_callback(response.data)
     }).catch(function (error) {
-       console.log(error);
+       error_callback(error)
     });
   }
 };
