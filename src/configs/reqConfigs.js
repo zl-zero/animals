@@ -4,10 +4,9 @@ import storeUtil from 'utils/storeUtils';
 
 export default {
   //登录
-  doLogin(data) {
+  doLogin(data,callback) {
     ajaxUtil.doPost('/animalUser/user/getToken', data , ( res ) => {
-      storeUtil.addLocalStore('token',res.response.token); 
-      console.log( res );
+      callback(res);
     }, ( err ) => {
       console.log( err );
     });

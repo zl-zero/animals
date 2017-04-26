@@ -15,6 +15,7 @@ import routersConfig from './routerConfig';
 
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
+import store from 'store';
 
 Vue.use(Router);
 Vue.use(VueAxios, axios);
@@ -30,17 +31,20 @@ const routers = new Router({
 
 routers.beforeEach((to, from, next) => {
   const codes = Util.getQueryString('code');
-  const token = storeUtil.getLocalStore('token');
-  console.log(token);
-  if (codes == null && token==null) {
+  const userInfo = store.getters.getUserInfo;
+
+  if (codes == null && userInfo==undefined) {
     /* eslint-disable */
     const uri = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + wxConfigs.appid
     + "&redirect_uri=" + encodeURI(wxConfigs.redirect_uri) + "&response_type=code&scope=" + wxConfigs.snsapi_userinfo + "&state=STATE#wechat_redirect";
     window.location.href = uri;
     next(false);
-  } else if(token ==null){
+  } else if(userInfo ==undefined){
     reqConfigs.doLogin({
       code:codes
+    },(res) => {
+      store.commit("ADD_USER_INFO",res.response);
+      console.log(store.getters.getUserInfo);
     });
     next();
   }else{
