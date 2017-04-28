@@ -31,7 +31,7 @@ const routers = new Router({
 
 routers.beforeEach((to, from, next) => {
   const codes = Util.getQueryString('code');
-  const userInfo = store.getters.getUserInfo;
+  const userInfo = store.state.userInfo;
 
   if (codes == null && userInfo==undefined) {
     /* eslint-disable */
@@ -44,7 +44,6 @@ routers.beforeEach((to, from, next) => {
       code:codes
     },(res) => {
       store.commit("ADD_USER_INFO",res.response);
-      console.log(store.getters.getUserInfo);
     });
     next();
   }else{

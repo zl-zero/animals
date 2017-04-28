@@ -1,7 +1,6 @@
 <template>
   <div>
     <router-view></router-view>
-
     <mt-tabbar fixed v-model="selected">
       <mt-tab-item id="information" >
           外卖

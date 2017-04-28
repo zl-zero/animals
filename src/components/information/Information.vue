@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     资讯
   </div>
 </template>
@@ -11,4 +11,5 @@
   }
 </script>
 <style lang="scss">
+  @import './information.scss';
 </style>
