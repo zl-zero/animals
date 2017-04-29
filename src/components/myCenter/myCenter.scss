@@ -1,16 +1,42 @@
 
 .user_back{
-  background: -webkit-linear-gradient(to bottom, #724bda , #456add);
-  background: -o-linear-gradient(to bottom, #724bda , #456add);
-  background: -moz-linear-gradient(to bottom, #724bda , #456add);
-  background: linear-gradient(to bottom, #724bda , #456add);
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
-}
-.user_backgrounds{
-  filter: opacity(0.2);
-  .user_headImg{
-    width: 120px;
-    height: 120px;
+  .user_backgrounds{
+    position: absolute;
+    background: -webkit-linear-gradient(to bottom, #724bda , #456add);
+    background: -o-linear-gradient(to bottom, #724bda , #456add);
+    background: -moz-linear-gradient(to bottom, #724bda , #456add);
+    background: linear-gradient(to bottom, #724bda , #456add);
+    z-index: 99;
+  }
+  .user_head_background{
+    position: absolute;
+    opacity: 0.1;
+    z-index: 100;
+  }
+  .user_back_down{
+    position: absolute;
+    background-color: white;
+    border-top-left-radius:100%;
+    border-top-right-radius: 100%;
+    top:100px;
+    height: 130px !important;
+    z-index: 101;
+  }
+  .user_head{
+    position: absolute;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    border:2px solid white;
+    z-index: 102;
+  }
+  span{
+    position: absolute;
+    z-index: 103;
   }
 }

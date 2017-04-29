@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="user_back">
-      <div :style="backgroundImgs" class="user_backgrounds">
-        <img :src="userInfo.headImg" class="user_headImg" />
-      </div>
+      <div :style="winSize" class="user_backgrounds"></div>
+      <img :src="userInfo.headImg" class="user_head_background" :style="winSize"/>
+      <div :style="winSize" class="user_back_down"></div>
+      <div :style="positionPoint" class="user_head"></div>
+      <span :style="positionNick">{{userInfo.nickName}}</span>
     </div>
   </div>
 </template>
