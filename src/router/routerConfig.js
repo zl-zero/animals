@@ -5,26 +5,13 @@ export default {
   router: [
     {
       path:'/',
-      name:'index',
-      redirect: '/information',
-      component: Comps.Home
+      name:'information',
+      component: Comps.Information
     },
     {
-      path:'/index',
-      name:'index',
-      redirect: '/information',
-      component: Comps.Home,
-      children: [
-        {
-          path:'/Information',
-          name:'information',
-          component:Comps.Information
-        },
-        {
-          path:'/myCenter',
-          name:'myCenter',
-          component: Comps.MyCenter
-        }]
+      path:'/myCenter',
+      name:'myCenter',
+      component: Comps.MyCenter
     }
   ]
 }

@@ -1,20 +1,20 @@
 /* eslint-disable */
 import ajaxUtil from 'utils/ajaxUtil';
 import storeUtil from 'utils/storeUtils';
-import * as inter_path from './interfaceConfigs';
+import settings from 'src/configs/settings';
 
 export default {
   //登录
   doLogin(data,callback) {
-    ajaxUtil.doPost(inter_path.GET_TOKEN, data , ( res ) => {
+    ajaxUtil.doPost(settings.GET_TOKEN, data , ( res ) => {
       callback(res);
     }, ( err ) => {
       console.log( err );
     });
   },
-  doTopicList(){
-    ajaxUtil.doPost(inter_path.TOPIC_LIST,'',(res)=>{
-      console.log(res);
+  doTopicList(data,callback){
+    ajaxUtil.doPost(settings.TOPIC_LIST,data,(res)=>{
+      callback(res.response.content);
     }, ( err ) => {
       console.log( err );
     });
